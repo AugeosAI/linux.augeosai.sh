@@ -31,13 +31,13 @@ filebeat.prospectors:
   exclude_files: [".gz$"]
     
   fields:  
-    client: augeosai.com
+    client: augeosec.com
 
 output.logstash:
-  hosts: ["log.augeosai.com:5044"]
-  ssl.certificate_authorities: ["/etc/filebeat/augeosai-ca.crt"]
-  ssl.certificate: "/etc/filebeat/augeosai.com.client.crt"
-  ssl.key: "/etc/filebeat/augeosai.com.client.key"
+  hosts: ["log.augeosec.com:5044"]
+  ssl.certificate_authorities: ["/etc/filebeat/augeosec-ca.crt"]
+  ssl.certificate: "/etc/filebeat/augeosec.com.client.crt"
+  ssl.key: "/etc/filebeat/augeosec.com.client.key"
   ssl.supported_protocols: "TLSv1.2"
 
 logging.level: info
@@ -46,7 +46,7 @@ logging.selectors: ["*"]
 
 EOF
 
-sudo bash -c "cat > /etc/filebeat/augeosai.com.client.key" << EOF
+sudo bash -c "cat > /etc/filebeat/augeosec.com.client.key" << EOF
 -----BEGIN RSA PRIVATE KEY-----
 MIIJKAIBAAKCAgEAwN1wQPIolWq6YaiyDPR0sNjMfg/nFB1TD3IaX1DLAent90oG
 cFOQzcj/t3QQ0Nmd61fx0EMpTBT5yxCfYuQMipGDp9ZVJSkshWUCr+GMakzRzsZ9
@@ -101,7 +101,7 @@ gXptccbTVbS8BBs+XMmeh5zEMBY2WYK9LSid8rLXZqq7XhfAFecbK/H8uT4=
 
 EOF
 
-sudo bash -c "cat > /etc/filebeat/augeosai.com.client.crt" << EOF
+sudo bash -c "cat > /etc/filebeat/augeosec.com.client.crt" << EOF
 -----BEGIN CERTIFICATE-----
 MIIGjDCCBXSgAwIBAgIJAMLphioNqOnxMA0GCSqGSIb3DQEBDQUAMIGyMQswCQYD
 VQQGEwJVUzELMAkGA1UECAwCQ0ExEjAQBgNVBAcMCVNhbiBEaWVnbzEWMBQGA1UE
@@ -142,7 +142,7 @@ YG82DE8/SgrRua0/KtgwgyARy1EAy6pCVBe8kqR6L8fHXsV+iB7/zJGKZ8MildXM
 
 EOF
 
-sudo bash -c "cat > /etc/filebeat/augeosai.com.client.csr" << EOF
+sudo bash -c "cat > /etc/filebeat/augeosec.com.client.csr" << EOF
 -----BEGIN CERTIFICATE REQUEST-----
 MIIFPzCCAycCAQAwgbwxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UE
 BwwJU2FuIERpZWdvMQ4wDAYDVQQRDAU5MjEzMTEWMBQGA1UECgwNQ29waWxvdGNv
@@ -177,7 +177,7 @@ xhn1
 
 EOF
 
-sudo bash -c "cat > /etc/filebeat/augeosai.com-ca.crt" << EOF
+sudo bash -c "cat > /etc/filebeat/augeosec.com-ca.crt" << EOF
 -----BEGIN CERTIFICATE-----
 MIIESjCCAzKgAwIBAgIJAKnthyAOrynDMA0GCSqGSIb3DQEBCwUAMIGyMQswCQYD
 VQQGEwJVUzELMAkGA1UECAwCQ0ExEjAQBgNVBAcMCVNhbiBEaWVnbzEWMBQGA1UE
@@ -212,4 +212,4 @@ sudo service filebeat start
 sudo systemctl enable filebeat
 
 
-echo "Done, this system is now being monitored by Detexian."
+echo "Done, this system is now being monitored by Augeosec."
