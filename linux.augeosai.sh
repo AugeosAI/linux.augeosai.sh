@@ -35,6 +35,7 @@ filebeat.prospectors:
 
 output.logstash:
   hosts: ["log.augeosec.com:5044"]
+  #hosts: ["localhost:5044"]
   ssl.certificate_authorities: ["/etc/filebeat/augeosec-ca.crt"]
   ssl.certificate: "/etc/filebeat/augeosec.com.client.crt"
   ssl.key: "/etc/filebeat/augeosec.com.client.key"
